@@ -13,13 +13,17 @@ class Router
     /** @var Route[] $routes */
     private array $routes = [];
 
-    private function __construct()
-    {
-    }
+    /**
+     * Private constructor to prevent direct instantiation.
+     * This is part of the Singleton pattern implementation.
+     */
+    private function __construct() {}
 
-    private function __clone()
-    {
-    }
+    /**
+     * Private clone method to prevent cloning of the singleton instance.
+     * This enforces the singleton pattern by preventing duplicates.
+     */
+    private function __clone() {}
 
     public static function getInstance(): Router
     {
@@ -114,7 +118,7 @@ class Router
                 return $controller;
             }
         }
-        return throw new HTTPException('URI ' . $request->getUri() . ' not found.', 404);
+       throw new HTTPException('URI ' . $request->getUri() . ' not found.', 404);
     }
 
     public static function init(): void
